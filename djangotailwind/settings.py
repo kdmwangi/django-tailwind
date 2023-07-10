@@ -58,6 +58,10 @@ AUTH_USER_MODEL = 'myapp.MyappUSer'
 # set boostrap4 as the default and allowed crispy template pack
 CRISPY_TEMPLATE_PACK = 'tailwind'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
+# define the LOGIN_URL Constant to redirect the users once they click logout view
+LOGIN_URL = 'myapp:login'
+# declare the LOGIN_REDIRECT_URL constant to define the page to take user after login
+LOGIN_REDIRECT_URL = 'myapp:donation'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
