@@ -11,3 +11,7 @@ from django import forms
 class MyappUser(AbstractUser):
     phone_number = PhoneNumberField(help_text="start with the country code eg +254")
     email = models.EmailField()
+class MympesaDonations(models.Model):
+
+    mpesa_code = models.CharField(max_length=400)
+    customer_id = models.ForeignKey(MyappUser,on_delete=models.CASCADE)

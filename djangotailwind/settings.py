@@ -9,8 +9,22 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
+from datetime import datetime
 
+
+import environ
 from pathlib import Path
+env = environ.Env()
+environ.Env.read_env()
+
+# read the environment variable from the env
+CONSUMER_KEY = env('CONSUMER_KEY')
+# second optional way to read environmental variable
+# for this to work define the .env in the same folder as your settings and add it in .gitignore
+CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+
+PASS_KEY = env('PASS_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +39,8 @@ SECRET_KEY = 'django-insecure-np!(s3fbi3cz3d$l#rid(7w=43ezh$#rf5ek2#_yw4zr%v1za9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['0882-197-231-183-178.ngrok-free.app','127.0.0.1','77f5-102-140-245-169.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://0882-197-231-183-178.ngrok-free.app','https://77f5-102-140-245-169.ngrok-free.app']
 
 # Application definition
 
@@ -146,3 +160,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# TODO:shift this code
+
