@@ -1,4 +1,4 @@
-# Django Tailwind, Django Phonenumbers, Crispy
+# Django Tailwind, Django Phonenumbers, Crispy And Daraja Api
 pip install django-tailwind
 
 for the latest version use
@@ -24,6 +24,7 @@ python -m pip install <a>git+https://github.com/timonweb/django-tailwind.git
 * update your INSTALLED_APPS add 'crispy_forms' and 'crispy_bootstrap4'
 * set CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4" and CRISPY_TEMPLATE_PACK = "bootstrap4"
 this is to set crispy_boostrap4 as default and allowed template pack
+* link to daraja Api https://developer.safaricom.co.ke/Documentation
 
 
 
