@@ -1,4 +1,5 @@
 import base64
+import json
 
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
@@ -104,7 +105,7 @@ def donation(request):
             "PartyA": 254708374149,
             "PartyB": 174379,
             "PhoneNumber": int(phone_number),
-            "CallBackURL": f"https://77f5-102-140-245-169.ngrok-free.app/myapp/mpesapay/{user.id}",
+            "CallBackURL": f"https://7b9f-102-140-245-169.ngrok-free.app/myapp/mpesapay/{user.id}",
             "AccountReference": "Dennis Foundation",
             "TransactionDesc": "Payment of V"
         }
@@ -118,14 +119,12 @@ def donation(request):
     return render(request, 'myapp/transaction.html', context={})
 
 
-def mpesapay(request,id):
-    print("******************************")
-    print(request.body)
-    # req(method='POST',)
+def mpesapay(request, id):
     # to decode the request sent by Mpesa Api
-    response =request.body.decode(encoding='utf-8')
-    print(response)
-    print(id)
+    response = json.loads(request.body.decode(encoding='utf-8'))
 
+    receipt = response['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
+    usr = MyappUser.objects.get(id=int(id))
+    usr.mympesadonations_set.create(mpesa_code=receipt, mpesa_request_body=response)
 
     return JsonResponse({}, safe=True)

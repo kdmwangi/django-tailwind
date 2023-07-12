@@ -15,3 +15,4 @@ class MympesaDonations(models.Model):
 
     mpesa_code = models.CharField(max_length=400)
     customer_id = models.ForeignKey(MyappUser,on_delete=models.CASCADE)
+    mpesa_request_body = models.CharField(max_length=1000)
