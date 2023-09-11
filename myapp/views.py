@@ -78,9 +78,15 @@ def donation(request):
         print(phone_number)
 
         # make mpesa authorization to get the token, and make the lipa na mpesa online payment
+        # daraja api has switched to bearer_token for you to access the auth_token from you need to encode the
+        # consumer key and secret key using b64encode
+        secret_key = f'{CONSUMER_KEY}:{CONSUMER_SECRET}'
+        skey = secret_key.encode('ascii')
+        b_token = base64.b64encode(skey).decode('ascii')
+        print(b_token)
 
-        response = req(method='GET', url=MPESA_AUTHORIZATION_URL, params={'grant_type': 'client_credentials'},
-                       auth=(CONSUMER_KEY, CONSUMER_SECRET))
+        response = req(method='GET', url=MPESA_AUTHORIZATION_URL,
+                       headers={'Authorization': f"Basic {b_token}"})
         print(response.status_code)
         print(response.status_code, response.json())
         auth_token = response.json()['access_token']
@@ -105,7 +111,7 @@ def donation(request):
             "PartyA": 254708374149,
             "PartyB": 174379,
             "PhoneNumber": int(phone_number),
-            "CallBackURL": f"https://7b9f-102-140-245-169.ngrok-free.app/myapp/mpesapay/{user.id}",
+            "CallBackURL": f"https://26e1-197-231-183-178.ngrok-free.app/myapp/mpesapay/{user.id}",
             "AccountReference": "Dennis Foundation",
             "TransactionDesc": "Payment of V"
         }
@@ -122,6 +128,7 @@ def donation(request):
 def mpesapay(request, id):
     # to decode the request sent by Mpesa Api
     response = json.loads(request.body.decode(encoding='utf-8'))
+    print(response)
 
     receipt = response['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
     usr = MyappUser.objects.get(id=int(id))
