@@ -71,6 +71,13 @@ def registration(request):
 @login_required
 def donation(request):
     if request.method == 'POST':
+        # when the session middleware is activated in the settings middleware
+        # every view function will have a session object passed through the request
+        # you can set the expiry of the user session by passing the variable in seconds
+
+        request.session.set_expiry(300)
+        request.session.get_expire_at_browser_close()
+        # print(request.session)
         print(request.method)
         user = MyappUser.objects.filter(username=request.user.username)[0]
         print(user.phone_number, CONSUMER_KEY, CONSUMER_SECRET)
@@ -129,6 +136,8 @@ def mpesapay(request, id):
     # to decode the request sent by Mpesa Api
     response = json.loads(request.body.decode(encoding='utf-8'))
     print(response)
+    if 'CallbackMetadata' in response:
+        print(response['Body'])
 
     receipt = response['Body']['stkCallback']['CallbackMetadata']['Item'][1]['Value']
     usr = MyappUser.objects.get(id=int(id))
