@@ -2,6 +2,7 @@ import base64
 import json
 
 from django.shortcuts import render
+from django.contrib.auth import authenticate,login
 from django.contrib.auth.views import LoginView
 from .models import MyappUser
 from .forms import MyappUserCreationForm
@@ -54,7 +55,9 @@ def registration(request):
         print(form.is_valid())
         if form.is_valid():
             form.save()
-            return render(request, '', context={})
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            login(request,user)
+            return render(request, 'myapp/index.html', context={})
     else:
         if request.user.is_authenticated:
             # when the user tries to access the registration page they are already logged in
