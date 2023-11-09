@@ -37,7 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0882-197-231-183-178.ngrok-free.app','127.0.0.1','77f5-102-140-245-169.ngrok-free.app',
                  '7b9f-102-140-245-169.ngrok-free.app','26e1-197-231-183-178.ngrok-free.app','.vercel.app']
