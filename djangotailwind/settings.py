@@ -39,8 +39,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0882-197-231-183-178.ngrok-free.app','127.0.0.1','77f5-102-140-245-169.ngrok-free.app','7b9f-102-140-245-169.ngrok-free.app','26e1-197-231-183-178.ngrok-free.app']
-CSRF_TRUSTED_ORIGINS = ['https://0882-197-231-183-178.ngrok-free.app','https://77f5-102-140-245-169.ngrok-free.app','https://7b9f-102-140-245-169.ngrok-free.app',
+ALLOWED_HOSTS = ['0882-197-231-183-178.ngrok-free.app','127.0.0.1','77f5-102-140-245-169.ngrok-free.app',
+                 '7b9f-102-140-245-169.ngrok-free.app','26e1-197-231-183-178.ngrok-free.app','.vercel.app']
+CSRF_TRUSTED_ORIGINS = ['https://0882-197-231-183-178.ngrok-free.app','https://77f5-102-140-245-169.ngrok-free.app',
+                        'https://7b9f-102-140-245-169.ngrok-free.app',
                         'https://26e1-197-231-183-178.ngrok-free.app']
 
 # Application definition
@@ -110,7 +112,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'djangotailwind.wsgi.application'
+# WSGI_APPLICATION = 'djangotailwind.wsgi.application'
+WSGI_APPLICATION = 'vercel_app.wsgi.app'
 
 
 # Database
@@ -164,6 +167,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+# config for vercel
 # TODO:shift this code
 
