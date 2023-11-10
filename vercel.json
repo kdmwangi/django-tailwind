@@ -1,7 +1,7 @@
 {
   "builds": [
     {
-      "src": "django-tailwind/wsgi.py",
+      "src": "djangotailwind/wsgi.py",
       "use": "@vercel/python",
       "config": {"maxLambdaSize": "15mb", "runtime": "python3.9"}
     }
@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "django-tailwind/wsgi.py"
+      "dest": "djangotailwind/wsgi.py"
     }
   ]
 }
