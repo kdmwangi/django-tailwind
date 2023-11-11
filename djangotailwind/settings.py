@@ -113,7 +113,7 @@ TEMPLATES = [
 ]
 
 # WSGI_APPLICATION = 'djangotailwind.wsgi.application'
-WSGI_APPLICATION = 'vercel_app.wsgi.app'
+WSGI_APPLICATION = 'djangotailwind.wsgi.app'
 
 
 # Database
