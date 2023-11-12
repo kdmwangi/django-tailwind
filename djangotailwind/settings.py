@@ -19,12 +19,15 @@ env = environ.Env()
 environ.Env.read_env()
 
 # read the environment variable from the env
-CONSUMER_KEY = env('CONSUMER_KEY')
+CONSUMER_KEY = '0jzjuvxR0DGxTRrwtaeZUeKhvNuUAE8Q'
+# CONSUMER_KEY = env('CONSUMER_KEY')
 # second optional way to read environmental variable
 # for this to work define the .env in the same folder as your settings and add it in .gitignore
-CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+# CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+CONSUMER_SECRET = 'lG7HbqkEAKgLfAGM'
 
-PASS_KEY = env('PASS_KEY')
+# PASS_KEY = env('PASS_KEY')
+PASS_KEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +37,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET')
+# SECRET_KEY = os.environ.get('DJANGO_SECRET')
+SECRET_KEY = 'django-insecure-np!(s3fbi3cz3d$l#rid(7w=43ezh$#rf5ek2#_yw4zr%v1za9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
